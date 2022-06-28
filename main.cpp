@@ -82,9 +82,24 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
 SinglyLinkedListNode* deleteNode(SinglyLinkedListNode* &head, int targetPosition) {
     //Check if the linkedList is empty. If empty, do nothing
     if (head) {
-        SinglyLinkedListNode *tempNode = head;
         if (targetPosition == 0) {
-            delete tempNode;
+            SinglyLinkedListNode *tempNode = head;
+            if (head->next) {
+                //Grab data from next node, copy to current node
+                head->data = head->next->data;
+                //Grab next node's next and set to current node's next.
+                head->next = head->next->next;
+                //delete next node.
+                tempNode->next = head;
+                delete tempNode;
+            }
+            else {
+                SinglyLinkedListNode *tailAddress = head;
+                delete head;
+                tailAddress = nullptr;
+                //can simply just delete the current node because tail.
+                //Need a way to set prev node next to null.
+            }
         }
         else {
             if (head->next) {
