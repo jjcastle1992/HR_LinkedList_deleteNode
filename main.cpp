@@ -79,8 +79,22 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  *
  */
 
-SinglyLinkedListNode* deleteNode(SinglyLinkedListNode* llist, int position) {
+SinglyLinkedListNode* deleteNode(SinglyLinkedListNode* &head, int targetPosition) {
+    //Check if the linkedList is empty. If empty, do nothing
+    if (head) {
+        SinglyLinkedListNode *tempNode = head;
+        if (targetPosition == 0) {
+            delete tempNode;
+        }
+        else {
+            if (head->next) {
+                deleteNode(head->next, (targetPosition - 1));
+            }
+        }
+        //need to check to ensure position is valid
+    }
 
+    return head;
 }
 
 int main()
