@@ -90,7 +90,6 @@ SinglyLinkedListNode* deleteNode(SinglyLinkedListNode* &head, int targetPosition
                 //Grab next node's next and set to current node's next.
                 head->next = head->next->next;
                 //delete next node.
-                //tempNode->next = head;
                 tempNode = nullptr;
                 delete tempNode;
             }
